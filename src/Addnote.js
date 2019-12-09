@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Addnote extends Component {
   render() {
@@ -34,5 +35,16 @@ class Addnote extends Component {
     );
   }
 }
+
+Addnote.propTypes = {
+  text: PropTypes.string,
+  onChangeNote: PropTypes.func,
+  handleAddFolder: PropTypes.func,
+  slectedFolder: PropTypes.string,
+  noteFolderIdChange: PropTypes.func,
+  textArea: PropTypes.string,
+  onChangeNoteTxtArea: PropTypes.func,
+  handleAddNote: PropTypes.func
+};
 
 export default Addnote;

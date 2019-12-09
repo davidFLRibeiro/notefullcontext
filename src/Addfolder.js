@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Addfolder extends Component {
   render() {
@@ -18,5 +19,11 @@ class Addfolder extends Component {
     );
   }
 }
+
+Addfolder.propTypes = {
+  text: PropTypes.string,
+  onChangeFolder: PropTypes.func,
+  handleAddFolder: PropTypes.func
+};
 
 export default Addfolder;

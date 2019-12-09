@@ -10,6 +10,7 @@ import config from './config';
 import Addnote from './Addnote';
 import './App.css';
 import notefulcontext from './context/contextState';
+import NoteFullError from './NoteFullError';
 
 class App extends Component {
   constructor(props) {
@@ -144,12 +145,14 @@ class App extends Component {
         <Route
           path='/add-folder'
           render={props => (
-            <Addfolder
-              handleAddFolder={this.handleAddFolder}
-              onChangeFolder={this.onChangeFolder}
-              text={this.state.onChangeFolder}
-              {...props}
-            />
+            <NoteFullError>
+              <Addfolder
+                handleAddFolder={this.handleAddFolder}
+                onChangeFolder={this.onChangeFolder}
+                text={this.state.onChangeFolder}
+                {...props}
+              />
+            </NoteFullError>
           )}
         />
 
