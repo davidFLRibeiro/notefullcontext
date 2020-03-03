@@ -4,18 +4,27 @@ import PropTypes from 'prop-types';
 class Addfolder extends Component {
   render() {
     return (
-      <form className='Addfolder'>
-        <input
-          type='text'
-          name='text'
-          id='addfolder'
-          value={this.props.text}
-          onChange={this.props.onChangeFolder}
-        ></input>
-        <button type='button' onClick={this.props.handleAddFolder}>
-          add Folder
-        </button>
-      </form>
+      <div>
+        <form
+          className='Addfolder'
+          onSubmit={this.props.handleAddFolder}
+          noValidate
+        >
+          <input
+            type='text'
+            name='text'
+            id='addfolder'
+            value={this.props.text}
+            onChange={this.props.onChangeFolder}
+            required
+          ></input>
+          <button type='submit'>add Folder</button>
+        </form>
+
+        <div className='res-block'>
+          {this.props.isValid && <p>ERROR: folder name can not be empty</p>}
+        </div>
+      </div>
     );
   }
 }

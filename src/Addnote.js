@@ -4,34 +4,45 @@ import PropTypes from 'prop-types';
 class Addnote extends Component {
   render() {
     return (
-      <form className='AddNote'>
-        <input
-          type='text'
-          name='text'
-          id='addnote'
-          value={this.props.text}
-          onChange={this.props.onChangeNote}
-        ></input>
-        <select
-          value={this.props.slectedFolder}
-          onChange={this.props.noteFolderIdChange}
+      <div>
+        <form
+          className='AddNote'
+          noValidate
+          onSubmit={this.props.handleAddNote}
         >
-          {this.props.folders.map(folder => {
-            return (
-              <option key={folder.id} value={folder.id}>
-                {folder.name}
-              </option>
-            );
-          })}
-        </select>
-        <textarea
-          value={this.props.textArea}
-          onChange={this.props.onChangeNoteTxtArea}
-        />
-        <button type='button' onClick={this.props.handleAddNote}>
-          add Note
-        </button>
-      </form>
+          <input
+            required
+            type='text'
+            name='text'
+            id='addnote'
+            value={this.props.text}
+            onChange={this.props.onChangeNote}
+          ></input>
+          <select
+            value={this.props.slectedFolder}
+            onChange={this.props.noteFolderIdChange}
+          >
+            {this.props.folders.map(folder => {
+              return (
+                <option key={folder.id} value={folder.id}>
+                  {folder.name}
+                </option>
+              );
+            })}
+          </select>
+          <textarea
+            required
+            value={this.props.textArea}
+            onChange={this.props.onChangeNoteTxtArea}
+          />
+          <button type='submit'>add Note</button>
+        </form>
+        <div className='res-block'>
+          {this.props.isNoteValid && (
+            <p>ERROR: note name and content can not be empty</p>
+          )}
+        </div>
+      </div>
     );
   }
 }
